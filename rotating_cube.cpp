@@ -9,7 +9,7 @@ float zBuffer[width * height];
 const int backgroundASCIICode = ' ';
 const float K1 = 40;
 const int distanceFromCam = 100;
-const float cubeSize = 20;
+const float cubeSize = 10;
 float A = 0.0f, B = 0.0f; // Rotation angles
 
 // Rotate a 3D point around the X axis
