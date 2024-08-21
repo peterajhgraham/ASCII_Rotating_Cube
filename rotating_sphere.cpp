@@ -7,10 +7,10 @@ const int width = 160, height = 44;
 char buffer[width * height];
 float zBuffer[width * height];
 const int backgroundASCIICode = ' ';
-const float K1 = 40;
+const float K1 = 60;
 const int distanceFromCam = 100;
 const float sphereRadius = 20;
-const float lightDir[3] = {0.0f, 0.0f, -1.0f}; // Light direction
+float lightDir[3] = {0.0f, 0.0f, -1.0f}; // Light direction
 float A = 0.0f, B = 0.0f; // Rotation angles
 
 // Calculate dot product of two vectors
@@ -46,7 +46,7 @@ void rotateY(float &x, float &z, float angle) {
 void projectPoint(float x, float y, float z, int &xp, int &yp, float &ooz) {
     ooz = 1 / (z + distanceFromCam);
     xp = (int)(width / 2 + K1 * ooz * x * 2);
-    yp = (int)(height / 2 + K1 * ooz * y);
+    yp = (int)(height / 2 - K1 * ooz * y); // Y-axis should be inverted
 }
 
 // Calculate and render a point on the sphere
@@ -63,7 +63,7 @@ void renderPoint(float sphereX, float sphereY, float sphereZ, char ch) {
     // Calculate shading based on the angle to the light source
     float normal[3] = {sphereX, sphereY, sphereZ};
     normalize(normal);
-    float lightIntensity = dotProduct(normal, (float *)lightDir);
+    float lightIntensity = dotProduct(normal, lightDir);
 
     // Map light intensity to a character
     char shade = ' ';
@@ -73,7 +73,7 @@ void renderPoint(float sphereX, float sphereY, float sphereZ, char ch) {
     else if (lightIntensity > 0.1f) shade = '.';
 
     int idx = xp + yp * width;
-    if (idx >= 0 && idx < width * height) {
+    if (xp >= 0 && xp < width && yp >= 0 && yp < height) {
         if (ooz > zBuffer[idx]) {
             zBuffer[idx] = ooz;
             buffer[idx] = shade;
@@ -83,6 +83,7 @@ void renderPoint(float sphereX, float sphereY, float sphereZ, char ch) {
 
 int main() {
     printf("\x1b[2J");
+    normalize(lightDir);
 
     while (true) {
         memset(buffer, backgroundASCIICode, width * height);
@@ -93,8 +94,8 @@ int main() {
         B += 0.03f;
 
         // Render the sphere surface
-        for (float theta = 0; theta < 2 * M_PI; theta += 0.07f) {
-            for (float phi = 0; phi < M_PI; phi += 0.07f) {
+        for (float theta = 0; theta < 2 * M_PI; theta += 0.02f) {
+            for (float phi = 0; phi < M_PI; phi += 0.02f) {
                 float x = sphereRadius * sin(phi) * cos(theta);
                 float y = sphereRadius * sin(phi) * sin(theta);
                 float z = sphereRadius * cos(phi);
