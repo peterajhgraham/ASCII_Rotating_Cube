@@ -77,8 +77,8 @@ int main() {
         memset(zBuffer, 0, width * height * sizeof(float));
 
         // Rotate the cube
-        A += 0.04f;
-        B += 0.03f;
+        A += 0.02f;
+        B += 0.015f;
 
         // Define the cube's corners
         float cube[8][3] = {
