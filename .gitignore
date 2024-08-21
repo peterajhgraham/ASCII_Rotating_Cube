@@ -1,3 +1,7 @@
+rotating_sphere
+*.tmp
+*.log
+
 # Prerequisites
 *.d
 
