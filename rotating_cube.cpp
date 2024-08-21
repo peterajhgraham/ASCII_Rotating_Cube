@@ -113,7 +113,7 @@ int main() {
             if (i % width == width - 1) putchar('\n');
         }
 
-        usleep(8000); // Control frame rate
+        usleep(16000); // Control frame rate
     }
 
     return 0;
