@@ -24,12 +24,18 @@ ASCII_Rotating_Cube/
 
 ## Usage
 
-1. **Compile**:
+1. **Clone**:
+   ```
+   git clone https://github.com/peterajhgraham/Rotating_ASCII_Cube.git
+   cd Rotating_ASCII_Cube
+   ```
+
+3. **Compile**:
    ```
    g++ -o rotating_cube rotating_cube.cpp -lm
    ```
 
-2. **Run**:
+4. **Run**:
    ```
    ./rotating_cube
    ```
