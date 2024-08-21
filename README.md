@@ -4,6 +4,8 @@ A C++ program that generates a rotating 3D cube using ASCII characters. It is de
 
 *Enjoy the rotating cube*!
 
+https://github.com/user-attachments/assets/06601427-6c2b-435b-ba5b-ded2195fc7b9
+
 ## Directory Structure
 
 ```
