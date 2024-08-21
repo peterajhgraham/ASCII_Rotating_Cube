@@ -34,7 +34,8 @@ ASCII_Rotating_Cube/
 
 ## Customization
 
-* **Rotation Speed:** You can modify the rotation speed by changing the values of `A += 0.04f;` and `B += 0.03f;` in the main loop
+* **Rotation Speed:** You can modify the rotation speed by changing the values of `A += 0.02f;` and `B += 0.015f;` in the `rotating_cube.cpp` file
+   * Increase/decrease the values of A & B proportionately to avoid an uneven and distorted cube
 
 * **Cube Size:** Adjust the cube size by modifying the `cubeSize` variable
 
