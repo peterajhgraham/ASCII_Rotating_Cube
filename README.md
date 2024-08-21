@@ -2,6 +2,16 @@
 
 A C++ program that generates a rotating 3D sphere using ASCII characters. It is designed with dynamic shading and realistic rotation based on concepts within linear algebra such as dot product, vector normalization, as well as the projection and rendering of 3D points onto a 2D screen.
 
+## Directory Structure
+
+```
+ASCII_Rotating_Sphere/
+├── rotating_sphere.cpp
+├── LICENSE
+├── README.md
+└── .gitignore
+```
+
 ## Prerequisites
 
 * **C++ Compiler**
